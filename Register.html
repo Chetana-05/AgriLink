@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> <!-- FontAwesome Icons CDN -->
+    <style>
+        body {
+            background-image: url('https://via.placeholder.com/1500'); /* Replace with your desired background image URL */
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-sans bg-cover bg-center">
+
+    <div class="max-w-4xl mx-auto bg-white bg-opacity-75 rounded-lg shadow-lg p-8 mt-20">
+        <h1 class="text-3xl font-semibold text-center text-blue-600 mb-6">Registration Form</h1>
+        
+        <form action="/register" method="POST">
+            <center><p>{{data}}</p></center>
+            <table class="w-full">
+                <!-- Full Name -->
+                <tr>
+                    <td class="p-3 text-lg">User Name</td>
+                    <td class="p-3">
+                        <input type="text" name="username" class="w-full p-2 rounded-lg border border-gray-300" placeholder="Enter your User name">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="p-3 text-lg">Password</td>
+                    <td class="p-3">
+                        <input type="password" name="password" class="w-full p-2 rounded-lg border border-gray-300" placeholder="Enter your password">
+                    </td>
+                </tr>
+                
+                <!-- Role -->
+                <tr>
+                    <td class="p-3 text-lg">Role</td>
+                    <td class="p-3">
+                        <select name="role" id="role" class="w-full p-2 rounded-lg border border-gray-300">
+                            <option value="farmer">Farmer</option>
+                            <option value="worker">Worker</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <!-- Work Type -->
+                <tr>
+                    <td class="p-3 text-lg">Work Type</td>
+                    <td class="p-3">
+                        <select name="worktype" id="worktype" class="w-full p-2 rounded-lg border border-gray-300">
+                            <option value="cotton">Cotton</option>
+                            <option value="paddy">Paddy</option>
+                            <option value="sugarcane">Sugarcane</option>
+                            <option value="planting">Planting</option>
+                            <option value="weeding">Weeding</option>
+                            <option value="harvesting">Harvesting</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <!-- Mobile Number -->
+                <tr>
+                    <td class="p-3 text-lg">Mobile Number</td>
+                    <td class="p-3">
+                        <input type="text" name="mobile_number" class="w-full p-2 rounded-lg border border-gray-300" value="+91" maxlength="10" placeholder="Enter your mobile number">
+                    </td>
+                </tr>
+                
+                <!-- Address -->
+                <tr>
+                    <td class="p-3 text-lg">Address</td>
+                    <td class="p-3">
+                        <textarea name="Address" rows="4" cols="30" class="w-full p-2 rounded-lg border border-gray-300" placeholder="Enter your address"></textarea>
+                    </td>
+                </tr>
+                
+                <!-- Village Name -->
+                <tr>
+                    <td class="p-3 text-lg">Village</td>
+                    <td class="p-3">
+                        <select name="village_name" id="village_name" class="w-full p-2 rounded-lg border border-gray-300">
+                            <option value="kotikalapudi">Kotikalapudi</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <!-- State -->
+                <tr>
+                    <td class="p-3 text-lg">State</td>
+                    <td class="p-3">
+                        <select name="state_name" id="state_name" class="w-full p-2 rounded-lg border border-gray-300">
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <!-- District -->
+                <tr>
+                    <td class="p-3 text-lg">District</td>
+                    <td class="p-3">
+                        <select name="district_name" id="district_name" class="w-full p-2 rounded-lg border border-gray-300">
+                            <option value="Prakasam">Prakasam</option>
+                            <option value="Guntur">Guntur</option>
+                            <option value="Bapatla">Bapatla</option>
+                            <option value="Karnool">Karnool</option>
+                        </select>
+                    </td>
+                </tr>
+                
+                <!-- Submit Button -->
+                <tr>
+                    <td class="p-3" colspan="2">
+                        <button type="submit" class="w-full p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold">
+                            <i class="fas fa-paper-plane mr-2"></i>Submit
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>
