@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function filterCards() {
+            let category = document.getElementById("categoryFilter").value.toLowerCase();
+            let cards = document.querySelectorAll(".data-card");
+            cards.forEach(card => {
+                let workType = card.getAttribute("data-category").toLowerCase();
+                card.style.display = (category === "all" || workType === category) ? "block" : "none";
+            });
+        }
+    </script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <!-- Navbar -->
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Farmer Dashboard</h2>
+            <div class="space-x-4">
+                <a href="/mybookings">
+                    <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">My Bookings</button>
+                </a>
+                <a href="/logout">
+                    <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Logout</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="mb-6">
+            <label for="categoryFilter" class="block text-lg font-medium mb-2">Filter by Work Type:</label>
+            <select id="categoryFilter" class="w-full p-2 border rounded shadow-sm" onchange="filterCards()">
+                <option value="all">All</option>
+                <option value="cotton">Cotton</option>
+                <option value="paddy">Paddy</option>
+                <option value="sugarcane">Sugarcane</option>
+                <option value="planting">Planting</option>
+                <option value="weeding">Weeding</option>
+                <option value="harvesting">Harvesting</option>
+            </select>
+        </div>
+
+        <!-- Display messages if any -->
+        {% if data %}
+        <div class="text-center text-green-600 font-semibold mb-4">
+            <h3>{{ data }}</h3>
+        </div>
+        {% endif %}
+
+        <!-- Workers Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for worker in workers %}
+            <div class="data-card bg-white p-6 shadow-lg rounded-lg border border-gray-200" data-category="{{ worker.Work_Type }}">
+                <h3 class="text-xl font-semibold mb-2">{{ worker.User_name }}</h3>
+                <p><strong>Work Type:</strong> {{ worker.Work_Type }}</p>
+                <p><strong>Address:</strong> {{ worker.Address }}</p>
+                <p><strong>Village:</strong> {{ worker.Village_Name }}</p>
+                <p><strong>State:</strong> {{ worker.State_Name }}</p>
+                <p><strong>Mobile:</strong> {{ worker.Mobile_Number }}</p>
+                <div class="mt-4 text-center">
+                    <a href="/bookworker?id={{worker._id}}">
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition">Book Now</button>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
